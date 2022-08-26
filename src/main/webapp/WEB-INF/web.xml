@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+    <servlet>
+        <!--Servlet的全称类名，通过名称找到对应的Servlet，因为的配置文件中可能存在很多Servlet，他需要一个可识别的名称标签-->
+        <servlet-name>helloServlet</servlet-name>
+        <!--访问实际的类，这里需要写全限定名-->
+        <servlet-class>com.example.servlet03.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <!--同上，Servlet名称-->
+        <servlet-name>helloServlet</servlet-name>
+        <!--URL路径访问名称，比如：localhost:8080/servlet/test（这里访问就需要在地址栏上假如test）-->
+        <url-pattern>/hello-servlet</url-pattern>
+    </servlet-mapping>
+</web-app>
