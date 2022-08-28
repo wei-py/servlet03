@@ -1,7 +1,7 @@
 package model.utils;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.net.URL;
 import java.sql.*;
 import java.util.Properties;
 
@@ -16,7 +16,6 @@ public class DBUtils {
      * 新建Properties集合，存放配置信息，以便后续流的读取
      */
     private static final Properties PROPERTIES = new Properties();
-
     /**
      * 所有操作即为单线程操作，应用了多个Connection对象，我们将一个线程绑定一个Connection连接使用
      */
@@ -30,6 +29,7 @@ public class DBUtils {
          * 使用类自身带的流读取配置，无需关闭
          */
         InputStream inputStream = DBUtils.class.getResourceAsStream("/db.properties");
+        //加载文件
         try {
             /**
              * 通过流将配置信息的内容分割成键值对，并连接数据库
@@ -61,7 +61,7 @@ public class DBUtils {
         if (connection == null) {
             try {
 //                connection = DriverManager.getConnection(PROPERTIES.getProperty("url"), PROPERTIES.getProperty("username"), PROPERTIES.getProperty("password"));
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ceshi", "root", "root");
+                connection = DriverManager.getConnection("jdbc:mysql://175.178.106.77:3306/javaWeb", "root", "");
                 /**
                  * 把连接对象存入ThreadLocal里
                  */
